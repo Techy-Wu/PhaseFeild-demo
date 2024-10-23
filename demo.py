@@ -16,11 +16,11 @@ loop_boundary = True
 boundaries = [0, 100]
 x_limit = 500
 heat_zone = [100, 300]
-total_time = 100000
+total_time = 10000
 time_step = 1
 x_step = 1              # Distance of each cell
 frame_time = 0.01       # Stop time for each frame of plot
-plot_interval = 100     # Plot every x steps
+plot_interval = 1000    # Plot every x steps
 
 map_limit = x_limit * int(1 / x_step)
 
@@ -28,12 +28,13 @@ def plot(step, frame_time):
     global map, x_limit, x_step
     plt.cla()
     plt.plot(range(len(map)), map)
-    plt.title('Temperature Configueration @ step = %d' % step)
+    plt.title('Temperature Configuration @ step = %d' % step)
     plt.xlim(1, x_limit * x_step)
     plt.ylim(0, 100)
     plt.xlabel('Index')
     plt.ylabel('Temperature')
     plt.pause(frame_time)
+    plt.savefig('Step %d.png' % step)
 
 plt.ion()
 
